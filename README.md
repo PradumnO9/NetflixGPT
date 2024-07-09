@@ -2,9 +2,16 @@
 - create-react-app
 - configured Tailwind CSS
 - Header
+- Routing of App
 - Login Form
 - Sign Up Form
-- Formic library to build form -> optional
+- Form Validation
+- useRef() Hook
+- Firebase Setup
+- Deploying our App to production
+- Create Sign Up user account
+- Implement SignIn user API
+- Created Redux Store with userSlice
 
 
 # Features
