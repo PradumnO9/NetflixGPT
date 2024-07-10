@@ -4,6 +4,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../redux/userSlice";
+import { NETFLIX_LOGO_URL } from "../utils/constant";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -23,30 +24,36 @@ const Header = () => {
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        const { uid, email, displayName } = user;
-        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
         navigate("/browse");
       } else {
         dispatch(removeUser());
         navigate("/");
       }
     });
+
+    // unsbscribe called when component unmounts
+    return () => unsubscribe();
   }, []);
 
   return (
     <div className="absolute flex justify-between px-10 py-4 bg-gradient-to-b from-black z-10 w-full">
-      <img
-        className="w-52"
-        src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-        alt="logo"
-      />
+      <img className="w-52" src={NETFLIX_LOGO_URL} alt="logo" />
       {user && (
         <div className="w-auto mx-10 p-2 items-center">
           <img
             className="w-14 h-14 rounded-md cursor-pointer"
-            src="https://occ-0-6247-2164.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdpkabKqQAxyWzo6QW_ZnPz1IZLqlmNfK-t4L1VIeV1DY00JhLo_LMVFp936keDxj-V5UELAVJrU--iUUY2MaDxQSSO-0qw.png?r=e6e"
+            src={user.photoURL}
             alt="user-icon"
             onClick={handleProfileImgClick}
           />
