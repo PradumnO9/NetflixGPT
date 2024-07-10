@@ -1,13 +1,12 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
-import { checkValidData } from "../utils/validate";
+import { checkValidDataSignIn, checkValidDataSignUp } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/userSlice";
 
@@ -16,7 +15,6 @@ const Login = () => {
   const [errorMsg, setErrorMsg] = useState(null);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const name = useRef(null);
   const email = useRef(null);
@@ -27,9 +25,15 @@ const Login = () => {
   };
 
   const handleButtonClick = () => {
-    const message = checkValidData(email.current.value, password.current.value);
-    setErrorMsg(message);
-    if (message) return;
+    if (!isSignInForm) {
+      const message = checkValidDataSignUp(name.current.value, email.current.value, password.current.value);
+      setErrorMsg(message);
+      if (message) return;
+    } else {
+      const message = checkValidDataSignIn(email.current.value, password.current.value);
+      setErrorMsg(message);
+      if (message) return;
+    }
 
     if (!isSignInForm) {
       // Sign Up
@@ -53,7 +57,6 @@ const Login = () => {
                   displayName: displayName,
                 })
               );
-              navigate("/Browse");
             })
             .catch((error) => {
               setErrorMsg(error.message);
@@ -73,8 +76,6 @@ const Login = () => {
       )
         .then(() => {
           // const user = userCredential.user;
-          // console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;

@@ -1,25 +1,39 @@
-import { signOut } from "firebase/auth";
-import React, { useState } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import React, { useEffect, useState } from "react";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, removeUser } from "../redux/userSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const [profileImgToggle, setProfileImgToggle] = useState(false);
 
+  const dispatch = useDispatch();
+
   const handleProfileImgClick = () => [setProfileImgToggle(!profileImgToggle)];
 
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {
-        navigate("/");
-      })
+      .then(() => {})
       .catch((error) => {
         navigate("/error");
       });
   };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName } = user;
+        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+  }, []);
 
   return (
     <div className="absolute flex justify-between px-10 py-4 bg-gradient-to-b from-black z-10 w-full">
