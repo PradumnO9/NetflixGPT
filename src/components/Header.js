@@ -59,7 +59,7 @@ const Header = () => {
           />
           {profileImgToggle && (
             <div className="absolute text-center bg-gradient-to-t from-black p-2 m-auto right-0 w-52 rounded-md">
-              <h1 className="p-2 text-lg bg-green-600 text-white rounded-md m-2">
+              <h1 className="p-2 text-lg bg-gray-500 text-white bg-opacity-50 rounded-md m-2">
                 {user?.displayName}
               </h1>
               <button
