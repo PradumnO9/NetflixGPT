@@ -4,7 +4,7 @@ import { IoMdInformationCircleOutline } from "react-icons/io";
 
 const VideoTitle = ({ title, description }) => {
   return (
-    <div className="w-screen aspect-video py-60 px-20 absolute text-white bg-gradient-to-r from-black">
+    <div className="w-full aspect-video py-60 px-20 absolute text-white bg-gradient-to-r from-black">
       <h1 className="font-bold text-5xl">{title}</h1>
       <p className="py-6 text-lg w-1/3">{description}</p>
       <div className="flex">

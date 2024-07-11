@@ -18,9 +18,12 @@
 - Register TMDB API & create an app  & get access token
 - Get data from TMDB now playing movies list API 
 - Create movieSlice
-- Custom Hook -> NowPlayingMovie, MovieTrailer
+- Custom Hook -> NowPlayingMovie, MovieTrailer, useUpcomingMovies, useTopRatedMovies, usePopularMovies
 - Update store with movies data & trailer
 - Embaded the YouTube video -> make it autoplay and mute
+- Build Secondary Container
+- Build Movie list & Card
+- TMDB Image CDN
 
 
 # Features
