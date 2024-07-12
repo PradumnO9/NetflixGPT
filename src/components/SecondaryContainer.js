@@ -2,11 +2,12 @@ import React from "react";
 import MovieList from "./MovieList";
 import { useSelector } from "react-redux";
 import lang from "../utils/languageConstants";
+import LoadingSpinner from "../utils/LoadingSpinner";
 
 const SecondaryContainer = () => {
   const movies = useSelector((store) => store.movies);
   const languageKey = useSelector((store) => store.config.lang);
-  if (!movies) return;
+  if (!movies) return <LoadingSpinner />;
 
   return (
     movies && (

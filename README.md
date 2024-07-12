@@ -24,6 +24,7 @@
 - Build Secondary Container
 - Build Movie list & Card
 - TMDB Image CDN
+- Multi-language Feature
 
 
 # Features

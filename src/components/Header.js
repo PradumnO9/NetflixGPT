@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { NETFLIX_LOGO_URL, SUPPORTED_LANGUAGES } from "../utils/constant";
 import { addUser, removeUser } from "../redux/userSlice";
-import { toggleGptSearchView } from "../redux/gptSlice";
+import { toggleGptSearchView, removeGptMovieResult } from "../redux/gptSlice";
 import { changeLanguage } from "../redux/configSlice";
 import lang from "../utils/languageConstants";
 
@@ -52,6 +52,8 @@ const Header = () => {
 
   const handleGptSearchClick = () => {
     dispatch(toggleGptSearchView());
+    // on click of gpt search button search movie results remove from redux store => gpt slice
+    dispatch(removeGptMovieResult());
   };
 
   const handleLanguageChange = (e) => {
