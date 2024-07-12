@@ -7,12 +7,14 @@ import { NETFLIX_LOGO_URL, SUPPORTED_LANGUAGES } from "../utils/constant";
 import { addUser, removeUser } from "../redux/userSlice";
 import { toggleGptSearchView } from "../redux/gptSlice";
 import { changeLanguage } from "../redux/configSlice";
+import lang from "../utils/languageConstants";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const languageKey = useSelector(store => store.config.lang);
   const [profileImgToggle, setProfileImgToggle] = useState(false);
 
   const handleProfileImgClick = () => [setProfileImgToggle(!profileImgToggle)];
@@ -62,25 +64,23 @@ const Header = () => {
       {user && (
         <div className="w-auto mx-10 p-2 items-center">
           <div className="flex">
-            {showGptSearch && (
-              <select
-                className="p-2 my-2 bg-black text-white rounded-lg"
-                onChange={handleLanguageChange}
-              >
-                {SUPPORTED_LANGUAGES.map((lang) => {
-                  return (
-                    <option key={lang.identifier} value={lang.identifier}>
-                      {lang.name}
-                    </option>
-                  );
-                })}
-              </select>
-            )}
+            <select
+              className="p-2 my-2 bg-black text-white rounded-lg"
+              onChange={handleLanguageChange}
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => {
+                return (
+                  <option key={lang.identifier} value={lang.identifier}>
+                    {lang.name}
+                  </option>
+                );
+              })}
+            </select>
             <button
               className="px-3 py-2 my-2 mx-4 bg-purple-800 text-white font-bold rounded-md hover:bg-opacity-85"
               onClick={handleGptSearchClick}
             >
-              GPT Search
+              {showGptSearch ? "Home" : "GPT Search"}
             </button>
             <img
               className="w-14 h-14 rounded-md cursor-pointer"
@@ -98,7 +98,7 @@ const Header = () => {
                 className="px-3 py-2 m-2 bg-red-600 text-white font-bold rounded-md hover:bg-opacity-85"
                 onClick={handleSignOut}
               >
-                Sign out
+                {lang[languageKey].signOutButton}
               </button>
             </div>
           )}
