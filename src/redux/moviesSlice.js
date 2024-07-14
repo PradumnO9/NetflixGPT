@@ -28,7 +28,7 @@ const moviesSlice = createSlice({
     },
     addPlayVideo: (state, action) => {
       state.playVideo = action.payload
-    }
+    },
   },
 });
 
