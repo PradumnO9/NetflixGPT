@@ -1,43 +1,39 @@
 # Netflix GPT
-- create-react-app
-- configured Tailwind CSS
-- Header
-- Routing of App
+
+# App Structure
+
+- Login/Sign Up
+  - Sigh In / Sigh Up form
+  - Redirect to Browse Page
+- Browse (after authentication)
+  - Header
+  - Main Movie
+    - Trailer in Background
+    - Title & Description
+    - MovieSuggestion
+      - MovieLists \* N
+- NetflixGPT
+  - Search Bar
+  - Movie Suggestions
+
+# Features
+
+- Tailwind CSS
 - Login Form
 - Sign Up Form
 - Form Validation
-- useRef() Hook
 - Firebase Setup
-- Deploying our App to production
-- Create Sign Up user account
-- Implement SignIn user API
 - Created Redux Store with userSlice
-- Implemented Sign Out
-- Update Profile API
 - Fetch Movies from TMDB database
-- Register TMDB API & create an app  & get access token
-- Get data from TMDB now playing movies list API 
+- Register TMDB API & create an app & get access token
+- Get data from TMDB now playing movies list API
 - Create movieSlice
 - Custom Hook -> NowPlayingMovie, MovieTrailer, useUpcomingMovies, useTopRatedMovies, usePopularMovies
-- Update store with movies data & trailer
-- Embaded the YouTube video -> make it autoplay and mute
-- Build Secondary Container
-- Build Movie list & Card
 - TMDB Image CDN
 - Multi-language Feature
 
+# Clone
 
-# Features
-- Login/Sign Up
-    - Sigh In / Sigh Up form
-    - Redirect to Browse Page
-- Browse (after authentication)
-    - Header
-    - Main Movie
-        - Trailer in Background
-        - Title & Description 
-        - MovieSuggestion
-            - MovieLists * N
-- NetflixGPT
-    - Search Bar
-    - Movie Suggestions
+- Clone this repository to your system
+- In terminal use command => npm i (to install dependencies)
+- npm start
