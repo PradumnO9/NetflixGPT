@@ -1,5 +1,16 @@
 # Netflix GPT
 
+# Tech Stack
+
+- FrontEnd
+  - React, Tailwind CSS
+- BackEnd
+  - TMDB live API's
+    - NowPlayingMovies
+    - PopularMovies
+    - TopRatedMovies
+    - UpcomongMovies
+
 # App Structure
 
 - Login/Sign Up
@@ -11,7 +22,7 @@
     - Trailer in Background
     - Title & Description
     - MovieSuggestion
-      - MovieLists \* N
+      - MovieLists * N
 - NetflixGPT
   - Search Bar
   - Movie Suggestions
@@ -31,6 +42,8 @@
 - Custom Hook -> NowPlayingMovie, MovieTrailer, useUpcomingMovies, useTopRatedMovies, usePopularMovies
 - TMDB Image CDN
 - Multi-language Feature
+- Redux => to manage data globally
+- GPT Search => used open AI API (model: "gpt-3.5-turbo") to get movies suggession
 
 # Clone
 
