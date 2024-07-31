@@ -10,10 +10,6 @@
   - React, Tailwind CSS
 - BackEnd
   - TMDB live API's
-    - NowPlayingMovies
-    - PopularMovies
-    - TopRatedMovies
-    - UpcomongMovies
 
 # App Structure
 
