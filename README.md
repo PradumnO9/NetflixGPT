@@ -1,5 +1,9 @@
 # Netflix GPT
 
+- Highly intrective, scalable and efficient movie streaming platform, having power of GPT API's for movie suggestion.
+- UI like Netflix, responsive for mobile devices.
+- App URL => https://netflix-gpt-lovat-beta.vercel.app/
+
 # Tech Stack
 
 - FrontEnd
@@ -44,6 +48,7 @@
 - Multi-language Feature
 - Redux => to manage data globally
 - GPT Search => used open AI API (model: "gpt-3.5-turbo") to get movies suggession
+- Deployed on Vercel
 
 # Clone
 
